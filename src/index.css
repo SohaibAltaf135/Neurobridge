@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Lexend', 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Custom Accessibility & Neurodivergent Styling */
+.font-opendyslexic {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+}
+
+.font-lexend {
+  font-family: 'Lexend', sans-serif !important;
+}
+
+/* Reading Ruler Overlay */
+.reading-ruler {
+  pointer-events: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background-color: rgba(254, 240, 138, 0.25);
+  border-top: 2px solid rgba(234, 179, 8, 0.6);
+  border-bottom: 2px solid rgba(234, 179, 8, 0.6);
+  box-shadow: 0 0 0 9999px rgba(15, 23, 42, 0.15);
+  z-index: 9999;
+  transition: top 0.05s ease-out;
+}
+
+/* Dark mode reading ruler */
+.dark .reading-ruler {
+  background-color: rgba(250, 204, 21, 0.2);
+  border-top: 2px solid rgba(250, 204, 21, 0.5);
+  border-bottom: 2px solid rgba(250, 204, 21, 0.5);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.4);
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
