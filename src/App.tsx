@@ -8,6 +8,7 @@ import { ApiKeyModal } from './components/ApiKeyModal';
 import { Brain, Key, Award } from 'lucide-react';
 
 export function App() {
+  const envKey = import.meta.env.VITE_GEMINI_API_KEY || '';
   const [session, setSession] = useState<ProcessedStudySession | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -16,7 +17,7 @@ export function App() {
     return localStorage.getItem('neurobridge_gemini_key') || '';
   });
   const [isApiKeyModalOpen, setIsApiKeyModalOpen] = useState<boolean>(false);
-
+  const activeKey = envKey || apiKey;
   const handleProcess = async (data: {
     text?: string;
     imageBase64?: string;
@@ -25,7 +26,7 @@ export function App() {
     setIsLoading(true);
     setError(null);
     try {
-      const processed = await processStudyMaterial(apiKey, {
+      const processed = await const processed = await processStudyMaterial(activeKey, {
         ...data,
         learningStyle: 'highschool'
       });
@@ -70,13 +71,14 @@ export function App() {
             </div>
           </div>
 
-          <button
-            onClick={() => setIsApiKeyModalOpen(true)}
-            className="text-xs font-semibold text-slate-600 hover:text-blue-600 border border-slate-200 bg-white hover:bg-slate-50 px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors"
-          >
-            <Key className="w-3.5 h-3.5 text-slate-400" />
-            <span>{apiKey ? 'API Key Set' : 'Enter Gemini Key'}</span>
-          </button>
+          {!envKey && (
+            <button
+              onClick={() => setIsApiKeyModalOpen(true)}
+              className="..."
+             >
+              ...keep everything inside the same...
+            </button>
+          )}
 
         </div>
       </header>
@@ -114,6 +116,7 @@ export function App() {
       </footer>
 
       {/* API Key Modal */}
+      {!envKey && (
       <ApiKeyModal
         isOpen={isApiKeyModalOpen}
         onClose={() => setIsApiKeyModalOpen(false)}
@@ -123,7 +126,7 @@ export function App() {
           localStorage.setItem('neurobridge_gemini_key', k);
         }}
       />
-
+    )}
     </div>
   );
 }
