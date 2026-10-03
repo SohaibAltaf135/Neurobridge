@@ -5,10 +5,11 @@ import { processStudyMaterial } from './services/gemini';
 import { CleanInput } from './components/CleanInput';
 import { CleanDashboard } from './components/CleanDashboard';
 import { ApiKeyModal } from './components/ApiKeyModal';
-import { Brain, Key, Award } from 'lucide-react';
+import { Brain, Key } from 'lucide-react';
 
 export function App() {
-  const envKey = import.meta.env.VITE_GEMINI_API_KEY || '';
+  const envKey: string = (import.meta as any).env?.VITE_GEMINI_API_KEY || '';
+
   const [session, setSession] = useState<ProcessedStudySession | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -17,7 +18,9 @@ export function App() {
     return localStorage.getItem('neurobridge_gemini_key') || '';
   });
   const [isApiKeyModalOpen, setIsApiKeyModalOpen] = useState<boolean>(false);
+
   const activeKey = envKey || apiKey;
+
   const handleProcess = async (data: {
     text?: string;
     imageBase64?: string;
@@ -26,7 +29,7 @@ export function App() {
     setIsLoading(true);
     setError(null);
     try {
-      const processed = await const processed = await processStudyMaterial(activeKey, {
+      const processed = await processStudyMaterial(activeKey, {
         ...data,
         learningStyle: 'highschool'
       });
@@ -49,13 +52,13 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans flex flex-col">
-      
+
       {/* Minimal, Simple Navbar */}
       <header className="bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-          
-          <div 
-            onClick={() => setSession(null)} 
+
+          <div
+            onClick={() => setSession(null)}
             className="flex items-center gap-2.5 cursor-pointer select-none"
           >
             <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-xs">
@@ -71,12 +74,14 @@ export function App() {
             </div>
           </div>
 
+          {/* Only show the key button if no key is set on the server */}
           {!envKey && (
             <button
               onClick={() => setIsApiKeyModalOpen(true)}
-              className="..."
-             >
-              ...keep everything inside the same...
+              className="text-xs font-semibold text-slate-600 hover:text-blue-600 border border-slate-200 bg-white hover:bg-slate-50 px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors"
+            >
+              <Key className="w-3.5 h-3.5 text-slate-400" />
+              <span>{apiKey ? 'API Key Set' : 'Enter Gemini Key'}</span>
             </button>
           )}
 
@@ -115,18 +120,19 @@ export function App() {
         NeuroBridge • Simple & Accessible AI Learning for ImpactHack 2026
       </footer>
 
-      {/* API Key Modal */}
+      {/* API Key Modal (hidden when a server key exists) */}
       {!envKey && (
-      <ApiKeyModal
-        isOpen={isApiKeyModalOpen}
-        onClose={() => setIsApiKeyModalOpen(false)}
-        apiKey={apiKey}
-        onSaveKey={(k) => {
-          setApiKey(k);
-          localStorage.setItem('neurobridge_gemini_key', k);
-        }}
-      />
-    )}
+        <ApiKeyModal
+          isOpen={isApiKeyModalOpen}
+          onClose={() => setIsApiKeyModalOpen(false)}
+          apiKey={apiKey}
+          onSaveKey={(k) => {
+            setApiKey(k);
+            localStorage.setItem('neurobridge_gemini_key', k);
+          }}
+        />
+      )}
+
     </div>
   );
 }
