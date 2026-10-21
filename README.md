@@ -1,7 +1,13 @@
 # 🧠 NeuroBridge — Adaptive Learning & Accessibility Copilot
 
-> **ImpactHack 2026 Submission**  
+[![Winner: Best Accessibility Project - ImpactHack 2026](https://img.shields.io/badge/%F0%9F%8F%86_ImpactHack_2026_Winner-Best_Accessibility_Project-0d9488?style=for-the-badge)](https://github.com/SohaibAltaf135/Neurobridge)
+
+> **🏆 Winner: Best Accessibility Project — ImpactHack 2026** *(Refactor the World)*  
 > *Transforming dense, intimidating textbooks and lecture slides into dyslexia-friendly, ADHD-adapted, multi-sensory study experiences.*
+
+<p align="center">
+  <img src="./public/impacthack-2026-certificate.png" alt="ImpactHack 2026 Best Accessibility Project Certificate - Sohaib Altaf" width="720" />
+</p>
 
 ---
 
@@ -49,8 +55,8 @@ Over **15–20% of students** live with learning differences like ADHD, dyslexia
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/your-username/neurobridge.git
-cd neurobridge
+git clone https://github.com/SohaibAltaf135/Neurobridge.git
+cd Neurobridge
 npm install
 ```
 
@@ -61,21 +67,17 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) in your web browser.
 
 ### 3. (Optional) Configure Gemini API Key
-Click **"Configure Gemini AI"** in the top navigation bar and paste your Google Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey).  
-*(NeuroBridge also includes pre-loaded interactive biology and physics demo scenarios that run 100% offline with zero setup!)*
+Click **"Enter Gemini Key"** in the top navigation bar and paste your Google Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey).  
+*(NeuroBridge also includes a built-in local text synthesizer and interactive biology/physics demo scenarios that run 100% offline with zero setup!)*
 
 ---
 
-## 🏆 ImpactHack 2026 Target Categories
+## 🏆 Awards & Recognition
 
-- 🥇 **ImpactHack Champion / Overall Top 3**
-- 🤖 **Best Use of AI** (Multimodal Vision OCR + Structured Knowledge Graphs + Conversational Copilot)
-- 🎓 **Best Education Project** (Transforms high school & college studying)
-- ♿ **Best Accessibility Project** (Dedicated specifically to neurodiverse, ADHD, and dyslexic learners)
-- 🎨 **Best Design & UX** (WCAG-conscious contrast, customizable tints, Bionic Reading, Reading Ruler)
-- 🚀 **Best Productivity & Automation** (Chops hours of reading into 15 minutes of structured mastery)
+- 🥇 **Winner: Best Accessibility Project** — *ImpactHack 2026 (October 15, 2026)*  
+  *Awarded to **Sohaib Altaf** by Refactor the World for the best project improving accessibility or inclusion.*
 
 ---
 
 ## 📜 License
-MIT License. Built with ❤️ for students everywhere.
+MIT License. Built with ❤️ by **Sohaib Altaf** for students everywhere.
